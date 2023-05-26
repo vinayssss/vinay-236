@@ -23,6 +23,27 @@ view: order_items {
     sql: ${TABLE}.inventory_item_id ;;
   }
 
+  parameter: new_test {
+    type: string
+    allowed_value: {
+      label: "2B Metallic Ponte Skinny"
+      value: "2B Metallic Ponte Skinny"
+    }
+  }
+
+  dimension: title_test {
+    label: "Title_Test"
+    sql:1 ;;
+    html: <h1>{% case  new_test._parameter_value %}
+              {%when "'2B Metallic Ponte Skinny '"%} 2b metallic ponte skinny
+              {%when "' 2B Metallic Wavy Sweater Skirt '"%} 2b metallic wavy sweater skirt
+              {%when "' 2B Metallic Zip Ankle Ponte Skinny '"%}2b metallic zip ankle ponte skinny
+              {% else %}{{new_test._parameter_value}}
+            {% endcase %}
+               by Vinay </h1>;;
+
+    }
+
   dimension: order_id {
     type: number
     # hidden: yes
