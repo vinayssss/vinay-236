@@ -77,6 +77,11 @@ view: order_items {
 
   measure: count {
     type: count
-    drill_fields: [id, orders.id, inventory_items.id,users.age]
+    drill_fields: [id, orders.id, inventory_items.id,users.age,count,average_sale_price,total_sale_price]
+  }
+  measure: new1 {
+    type: number
+    sql: ${total_sale_price}-${average_sale_price} ;;
+    drill_fields: [id, orders.id, inventory_items.id,users.age,count]
   }
 }
